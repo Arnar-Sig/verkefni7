@@ -1,3 +1,4 @@
+
 /**
  * Verkefni 7 – Caesar dulmál
  */
@@ -8,11 +9,29 @@ const LETTERS = `AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ`;
  * Byrja forrit.
  */
 function start() {
-  alert('Halló!')
+  alert('Halló!');
 }
 
 // Hér er gott að commenta út til að vinna í encode/decode föllum fyrst og síðan „viðmóti“ forrits
 start();
+let koda_afkoda = '';
+while(koda_afkoda != 'kóða' && koda_afkoda != 'afkóða') {
+  koda_afkoda = prompt('kóða eða afkóða')
+}
+
+let hlidrun ='';
+hlidrun = prompt('hliðrun:');
+hlidrun = parseInt(hlidrun);
+console.log(typeof hlidrun);
+console.log(hlidrun);
+
+let texti = prompt(`Gefðu upp strenginn sem á að ${koda_afkoda} með hliðrun ${hlidrun}`)
+
+
+
+
+
+
 
 /**
  * Kóðar streng með því að hliðra honum um n stök.
@@ -22,6 +41,13 @@ start();
  * @returns {string} Upprunalegi strengurinn hliðraður um n til hægri
  */
 function encode(str, n) {
+  let encoded;
+  let splittad = str.split("");
+  for(var i = 0; i<splittad.length;i++){              //var for(var i = 0; i<str.length;i++){ 
+
+
+  }
+
   return str;
 }
 
