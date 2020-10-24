@@ -21,20 +21,36 @@ function start() {
 start();
 let koda_afkoda = '';
 while(koda_afkoda != 'kóða' && koda_afkoda != 'afkóða') {
-  koda_afkoda = prompt('kóða eða afkóða')
+
+  koda_afkoda = prompt('Hvort viltu kóða eða afkóða streng? Skrifaðu „kóða“ eða „afkóða“')
+  if (koda_afkoda != 'kóða' && koda_afkoda != 'afkóða'){
+    alert(`Veit ekki hvaða aðgerð „${koda_afkoda}“ er. Reyndu aftur`);
+  }
 }
 
 let hlidrun ='';
-hlidrun = prompt('hliðrun:');
+while(isNaN(hlidrun) || hlidrun < 1 ||hlidrun > 31){
+  hlidrun = prompt('Hversu mikið á að hliðra streng? Gefðu upp heiltölu á bilinu [1, 31]');
+  if(isNaN(hlidrun) || hlidrun < 1 ||hlidrun > 31){
+    alert(`${hlidrun} er ekki heiltala á bilinu [1, 31]. Reyndu aftur.`)
+  }
+}
 hlidrun = parseInt(hlidrun);
 
 let texti = prompt(`Gefðu upp strenginn sem á að ${koda_afkoda} með hliðrun ${hlidrun}`);
 texti = texti.toUpperCase();
-console.log(texti);
 
-console.log(encode(texti, hlidrun));
+/*console.log(texti);
+console.log(decode(texti, hlidrun));
+*/
 
-
+if (koda_afkoda == 'kóða'){
+  let coded = encode(texti, hlidrun);
+  alert(`Kóðun á ${texti} er ${coded}`)
+} else if ( koda_afkoda == 'afkóða'){
+  let coded= decode(texti, hlidrun);
+  alert(`Afkóðun á ${texti} er ${coded}`);
+}
 
 
 /**
@@ -77,9 +93,27 @@ samansett = splittad.join("");
  * @returns {string} Upprunalegi strengurinn hliðraður um n til vinstri
  */
 function decode(str, n) {
-
-
-  return str;
+  let splittad = str.split("");
+  console.log(splittad);
+ 
+for(var i = 0; i<splittad.length; i++){
+  for (var j = 0; j<LETTERSA.length; j++){
+    if (splittad[i] == LETTERSA[j]){
+      splittad[i] = j
+    }
+  }
+}
+for (var i = 0; i<splittad.length; i++){
+  splittad[i] = splittad[i] - n;
+  if(splittad[i]<0){
+    splittad[i] = splittad[i] + 32;
+  }
+}
+for (var i = 0; i<splittad.length; i++){
+  splittad[i] = LETTERS[splittad[i]];
+}
+samansett = splittad.join("");
+  return samansett;
 }
 
 /*console.assert(encode('A', 3) === 'D', 'kóðun á A með n=3 er D');
