@@ -32,17 +32,20 @@ let hlidrun ='';
 while(isNaN(hlidrun) || hlidrun < 1 ||hlidrun > 31){
   hlidrun = prompt('Hversu mikið á að hliðra streng? Gefðu upp heiltölu á bilinu [1, 31]');
   if(isNaN(hlidrun) || hlidrun < 1 ||hlidrun > 31){
-    alert(`${hlidrun} er ekki heiltala á bilinu [1, 31]. Reyndu aftur.`)
+    alert(`${hlidrun} er ekki heiltala á bilinu [1, 31]. Reyndu aftur`)
   }
 }
 hlidrun = parseInt(hlidrun);
 
-let texti = prompt(`Gefðu upp strenginn sem á að ${koda_afkoda} með hliðrun ${hlidrun}`);
+let texti = 0;
+while(typeof texti != "string"){
+  texti = prompt(`Gefðu upp strenginn sem á að ${koda_afkoda} með hliðrun ${hlidrun}`);
+  if(typeof texti != "string"){
+    alert(`Þú gafst ekki upp streng. Reyndu aftur`)
+  }
+}
 texti = texti.toUpperCase();
 
-/*console.log(texti);
-console.log(decode(texti, hlidrun));
-*/
 
 if (koda_afkoda == 'kóða'){
   let coded = encode(texti, hlidrun);
